@@ -19,7 +19,8 @@
         <!-- Main content -->
         <section class="content">
            <div class="row">
-                <div class="col-md-12">
+               <div class="col-md-12">
+                    {!!Alert::showBox()!!}
                     <div class="box box-info">
                         <div class="box-header">
                             <h3 class="box-title"><i class="{{$template->icon}}"></i> List {{$template->title}}</h3>

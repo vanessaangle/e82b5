@@ -11,7 +11,7 @@
                 {{$template->title}}                
             </h1>
             <ol class="breadcrumb">
-                <li><a href="{{route('dashboard.index')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="{{route('admin.dashboard.index')}}"><i class="fa fa-dashboard"></i> Home</a></li>
                 <li class="active">{{$template->title}}</li>
             </ol>
         </section>
@@ -50,9 +50,9 @@
                                             <td>{{$data->nama}}</td>
                                         </tr>
                                         <tr>
-                                            <td>Email</td>
+                                            <td>Username</td>
                                             <td>:</td>
-                                            <td>{{$data->email}}</td>
+                                            <td>{{$data->username}}</td>
                                         </tr>
                                         <tr>
                                             <td>Telepon</td>
@@ -65,19 +65,19 @@
                                             <td>{{$data->role}}</td>
                                         </tr>
                                         <tr>
-                                            <td>Jenis Kelamin</td>
+                                            <td>Tanggal Lahir</td>
                                             <td>:</td>
-                                            <td>{{$data->jenis_kelamin}}</td>
+                                            <td>{{$data->tanggal_lahir}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tempat Lahir</td>
+                                            <td>:</td>
+                                            <td>{{$data->tempat_lahir}}</td>
                                         </tr>
                                         <tr>
                                             <td>Status</td>
                                             <td>:</td>
                                             <td>{{$data->status == 1 ? 'Aktif' : 'Tidak Aktif'}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Foto</td>
-                                            <td>:</td>
-                                            <td><img src="{{asset('image/'.$data->foto)}}" width="300px" alt=""/></td>
                                         </tr>
                                     </tbody>
                                 </tbody>

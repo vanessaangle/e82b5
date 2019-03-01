@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'id',
 
     /*
     |--------------------------------------------------------------------------
@@ -227,6 +227,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Alert' => App\Helpers\Alert::class,
         'AppHelper' => App\Helpers\AppHelper::class,
+        'Render' => App\Helpers\Render::class,
     ],
 
 ];
