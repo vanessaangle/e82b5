@@ -11,7 +11,7 @@
                 {{$template->title}}                
             </h1>
             <ol class="breadcrumb">
-                <li><a href="{{route('dashboard.index')}}"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li><a href="{{route('admin.dashboard.index')}}"><i class="fa fa-dashboard"></i> Home</a></li>
                 <li class="active">{{$template->title}}</li>
             </ol>
         </section>

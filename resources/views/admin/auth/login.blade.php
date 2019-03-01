@@ -34,7 +34,7 @@
         <div class="login-logo">
             <img src="{{asset('image/logo.png')}}" alt="" width="120px">
         </div>
-        <h3 class="text-center" style="color : white">Sistem Informasi Eksekutif Pendataan Kelahiran dan Pertumbuhan Bayi di Desa Rianggede</h3>
+        <h3 class="text-center" style="color : white">SISTEM INFORMASI GEOGRAFIS PEMETAAN PENDUDUK MISKIN KABUPATEN BADUNG BERBASIS WEB</h3>
         <!-- /.login-logo -->
         {{-- Memunculkan alert pemberitahuan --}}
         {!!Alert::showBox()!!}   
@@ -44,7 +44,7 @@
             <form action="{{route('admin.auth.login')}}" method="post">
                 @csrf
                 <div class="form-group has-feedback">
-                    <input type="email" name="email" class="form-control" placeholder="Email">
+                    <input type="text" name="username" class="form-control" placeholder="Username">
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">

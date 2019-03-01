@@ -42,7 +42,7 @@
     <link rel="stylesheet" href="{{asset('admin-lte')}}/https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition {{$template->theme}} sidebar-mini">
     <div class="wrapper">
 
         <header class="main-header">
@@ -51,7 +51,7 @@
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>A</b>LT</span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b>Desa Rianggede</b></span>
+                <span class="logo-lg"><b>GIS</b></span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top">
@@ -110,50 +110,50 @@
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">MAIN NAVIGATION</li>
-                    <li class="" class="{{$template->menu == 'orang_tua' ? 'active' : ''}}">
-                        <a href="{{route('dashboard.index')}}">
-                            <i class="fa fa-home"></i> <span>Home</span>                            
+                    <li class="" class="{{$template->menu == 'dashboard' ? 'active' : ''}}">
+                        <a href="{{route('admin.dashboard.index')}}">
+                            <i class="fa fa-home"></i> <span>Dashboard</span>                            
                         </a>
                     </li>
 
                     {{-- //menentukan hak akses user --}}
-                    @if(AppHelper::access(['Operator','Kepala Desa']))
-                        <li class="{{$template->menu == 'orang_tua' ? 'active' : ''}}">
+                    {{-- @if(AppHelper::access(['Admin']))
+                        <li class="{{$template->menu == 'user' ? 'active' : ''}}">
                             <a href="{{route('orang_tua.index')}}"  >
                                 <i class="fa fa-user"></i> 
                                 <span>Orang Tua</span>
                             </a>
                         </li>   
-                    @endif
+                    @endif --}}
 
                     {{-- //menentukan hak akses user --}}
-                    @if(AppHelper::access(['Operator','Kepala Desa']))
+                    {{-- @if(AppHelper::access(['Operator','Kepala Desa']))
                         <li class="{{$template->menu == 'bayi' ? 'active' : ''}}">
                             <a href="{{route('bayi.index')}}"  >
                                 <i class="fa fa-child"></i> 
                                 <span>Bayi</span>
                             </a>
                         </li>   
-                    @endif
+                    @endif --}}
 
-                    @if(AppHelper::access(['Operator','Kepala Desa']))
+                    {{-- @if(AppHelper::access(['Operator','Kepala Desa']))
                         <li class="{{$template->menu == 'bayi' ? 'active' : ''}}">
                             <a href="{{route('laporan_vaksin.index')}}"  >
                                 <i class="fa fa-medkit"></i> 
                                 <span>Vaksin</span>
                             </a>
                         </li>   
-                    @endif
+                    @endif --}}
                     
                     {{-- //menentukan hak akses user --}}
-                    @if(AppHelper::access(['Admin']))
+                    {{-- @if(AppHelper::access(['Admin']))
                         <li class="{{$template->menu == 'vaksin' ? 'active' : ''}}">
                             <a href="{{route('vaksin.index')}}"  >
                                 <i class="fa fa-medkit"></i> 
                                 <span>Manajemen Vaksin</span>
                             </a>
                         </li>   
-                    @endif
+                    @endif --}}
                     
                     {{-- //menentukan hak akses user --}}
                     @if(AppHelper::access(['Admin']))
