@@ -20,7 +20,8 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'], function(){
         Route::get('/dashboard', 'DashboardController@index')->name('admin.dashboard.index');
         Route::get('/user/profile','UserController@profile')->name('user.profile');
         Route::resources([
-            '/user' => 'UserController'
+            '/user' => 'UserController',
+            '/desa' => 'DesaController'
         ]); 
     });
 });

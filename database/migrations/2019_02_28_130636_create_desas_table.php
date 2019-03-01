@@ -17,8 +17,8 @@ class CreateDesasTable extends Migration
             $table->increments('id');
             $table->string('nama_desa');
             $table->string('status_desa');
-            $table->decimal('lat',10,8);
-            $table->decimal('long',10,8);
+            $table->string('lat');
+            $table->string('lng');
             $table->timestamps();
         });
     }

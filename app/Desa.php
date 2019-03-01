@@ -12,7 +12,7 @@ class Desa extends Model
         'nama_desa',
         'status_desa',
         'lat',
-        'long'
+        'lng'
     ];
 
     public function penduduk()

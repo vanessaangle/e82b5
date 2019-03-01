@@ -117,14 +117,14 @@
                     </li>
 
                     {{-- //menentukan hak akses user --}}
-                    {{-- @if(AppHelper::access(['Admin']))
-                        <li class="{{$template->menu == 'user' ? 'active' : ''}}">
-                            <a href="{{route('orang_tua.index')}}"  >
-                                <i class="fa fa-user"></i> 
-                                <span>Orang Tua</span>
+                    @if(AppHelper::access(['Admin']))
+                        <li class="{{$template->menu == 'desa' ? 'active' : ''}}">
+                            <a href="{{route('desa.index')}}"  >
+                                <i class="fa fa-map"></i> 
+                                <span>Desa</span>
                             </a>
                         </li>   
-                    @endif --}}
+                    @endif
 
                     {{-- //menentukan hak akses user --}}
                     {{-- @if(AppHelper::access(['Operator','Kepala Desa']))
