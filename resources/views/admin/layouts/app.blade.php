@@ -136,14 +136,14 @@
                         </li>   
                     @endif
 
-                    {{-- @if(AppHelper::access(['Operator','Kepala Desa']))
-                        <li class="{{$template->menu == 'bayi' ? 'active' : ''}}">
-                            <a href="{{route('laporan_vaksin.index')}}"  >
-                                <i class="fa fa-medkit"></i> 
-                                <span>Vaksin</span>
+                    @if(AppHelper::access(['Operator']))
+                        <li class="{{$template->menu == 'web' ? 'active' : ''}}">
+                            <a href="{{route('web.index')}}"  >
+                                <i class="fa fa-globe"></i> 
+                                <span>Website</span>
                             </a>
                         </li>   
-                    @endif --}}
+                    @endif
                     
                     {{-- //menentukan hak akses user --}}
                     {{-- @if(AppHelper::access(['Admin']))

@@ -28,7 +28,8 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'], function(){
         Route::resources([
             '/user' => 'UserController',
             '/desa' => 'DesaController',
-            '/penduduk' => 'PendudukController'
+            '/penduduk' => 'PendudukController',
+            '/web' => 'WebController'
         ]); 
     });
 });

@@ -8,11 +8,5 @@ class Web extends Model
 {
     protected $table = 'web';
 
-    protected $fillable = [
-        'gambar_depan',
-        'tentang',
-        'telepon',
-        'email',
-        'alamat'
-    ];
+    protected $guarded = [];
 }
