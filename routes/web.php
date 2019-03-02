@@ -13,6 +13,12 @@
 Route::get('/','HomeController@index');
 
 Route::group(['prefix' => 'admin','namespace' => 'Admin'], function(){
+    Route::get('/',function(){
+        return redirect(route('admin.dashboard.index'));
+    });
+    Route::get('/admin',function(){
+        return redirect(route('admin.dashboard.index'));
+    });
     Route::get('/login','LoginController@showLoginForm')->name('admin.auth.login');
     Route::post('/login','LoginController@login')->name('admin.auth.login');
     Route::get('/logout','LoginController@logout')->name('admin.auth.logout');
