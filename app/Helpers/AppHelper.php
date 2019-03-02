@@ -1,6 +1,7 @@
 <?php
 namespace App\Helpers;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Auth;
 
 class AppHelper{
@@ -139,33 +140,50 @@ class AppHelper{
 
     public static function bulan($bln){
         $bulan = $bln;
-        Switch ($bulan){
+        switch ($bulan){
             case 1 : $bulan="Januari";
-            Break;
+            break;
             case 2 : $bulan="Februari";
-            Break;
+            break;
             case 3 : $bulan="Maret";
-            Break;
+            break;
             case 4 : $bulan="April";
-            Break;
+            break;
             case 5 : $bulan="Mei";
-            Break;
+            break;
             case 6 : $bulan="Juni";
-            Break;
+            break;
             case 7 : $bulan="Juli";
-            Break;
+            break;
             case 8 : $bulan="Agustus";
-            Break;
+            break;
             case 9 : $bulan="September";
-            Break;
+            break;
             case 10 : $bulan="Oktober";
-            Break;
+            break;
             case 11 : $bulan="November";
-            Break;
+            break;
             case 12 : $bulan="Desember";
-            Break;
+            break;
         }
         return $bulan;
+    }
+
+    public static function uploader(Array $form, Request $request)
+    {
+        $uploaded = [];
+        foreach ($form as $item) {
+            if(array_key_exists('type',$item) && $item['type'] == 'file'){
+                if($request->hasFile($item['name']) && is_array($request->file($item['name']))){
+                    foreach ($request->file($item['name']) as $file) {
+                        $uploaded[$item['name']][] = 'storage/'.$file->store('files','public');
+                    }
+                }elseif ($request->hasFile($item['name'])) {
+                   $uploaded[$item['name']] = 'storage/'.$request->{$item['name']}->store('files','public');
+                }
+            }
+        }
+        return $uploaded;
     }
 
 }
