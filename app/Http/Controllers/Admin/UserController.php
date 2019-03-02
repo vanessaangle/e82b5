@@ -51,7 +51,7 @@ class UserController extends Controller
     {
         $template = (object) $this->template;
         $data = User::all();
-        return view('admin.user.index',compact('template','data'));
+        return view('admin.penduduk.index',compact('template','data'));
     }
 
     /**
@@ -85,7 +85,7 @@ class UserController extends Controller
             'role' => 'required'
         ]);
         $data = $request->all();
-        $data['password'] = encrypt($request->password);
+        $data['password'] = bcrypt($request->password);
         $data['tanggal_lahir'] = Carbon::parse($request->tanggal_lahir)->format('Y-m-d');
         User::create($data);
         Alert::make('success','Berhasil  simpan data');
@@ -136,7 +136,7 @@ class UserController extends Controller
         if($request ->password == ''){
              unset($data['password']);
         }else{
-              $data['password'] = encrypt($request->password);
+              $data['password'] = bcrypt($request->password);
         }
         User::find($id)->update($data);
         Alert::make('success','Berhasil mengubah data');

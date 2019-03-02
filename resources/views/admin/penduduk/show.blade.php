@@ -45,21 +45,89 @@
                                 <tbody>
                                     <tbody>                                                                                       
                                         <tr>
-                                            <td>Nama Desa</td>
+                                            <td>No KK</td>
                                             <td>:</td>
-                                            <td>{{$data->nama_desa}}</td>
+                                            <td>{{$data->kk}}</td>
                                         </tr>
                                         <tr>
-                                            <td>Status Desa</td>
+                                            <td>NIK</td>
                                             <td>:</td>
-                                            <td>{{$data->status_desa}}</td>
+                                            <td>{{$data->nik}}</td>
                                         </tr>
                                         <tr>
-                                            <td>Lokasi Desa</td>
+                                            <td>Nama/td>
                                             <td>:</td>
-                                            <td>
-                                                <div id='google_map' style='height:400px;'></div>
-                                            </td>
+                                            <td>{{$data->nama}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Alamat</td>
+                                            <td>:</td>
+                                            <td>{{$data->alamat}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tanggal Lahir</td>
+                                            <td>:</td>
+                                            <td>{{$data->tgl_lahir}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Agama</td>
+                                            <td>:</td>
+                                            <td>{{$data->agama}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Golongan Darah</td>
+                                            <td>:</td>
+                                            <td>{{$data->golongan_darah}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Pekerjaan</td>
+                                            <td>:</td>
+                                            <td>{{$data->pekerjaan}}</td>
+                                        </tr>
+                                         <tr>
+                                            <td>File KTP</td>
+                                            <td>:</td>
+                                            <td><a href="/{{$data->file_ktp}}">Download KTP</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>File Kartu Keluarga</td>
+                                            <td>:</td>
+                                            <td><a href="/{{$data->file_kk}}">Download KK</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>File Akta</td>
+                                            <td>:</td>
+                                            <td><a href="/{{$data->file_akta}}">Download Akta</a></td>
+                                        </tr>
+                                         <tr>
+                                            <td>Rastra</td>
+                                            <td>:</td>
+                                            <td>{{$data->rastra}}</td>
+                                        </tr>
+                                         <tr>
+                                            <td>Pakaian</td>
+                                            <td>:</td>
+                                            <td>{{$data->pakaian}}</td>
+                                        </tr>
+                                         <tr>
+                                            <td>Kesehatan</td>
+                                            <td>:</td>
+                                            <td>{{$data->kesehatan}}</td>
+                                        </tr>
+                                         <tr>
+                                            <td>Tempat Tinggal</td>
+                                            <td>:</td>
+                                            <td>{{$data->tempat_tinggal}}</td>
+                                        </tr>
+                                         <tr>
+                                            <td>Pendidikan</td>
+                                            <td>:</td>
+                                            <td>{{$data->pendidikan}}</td>
+                                        </tr>
+                                         <tr>
+                                            <td>Status</td>
+                                            <td>:</td>
+                                            <td>{{$data->status}}</td>
                                         </tr>
                                     </tbody>
                                 </tbody>

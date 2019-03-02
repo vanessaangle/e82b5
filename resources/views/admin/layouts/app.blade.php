@@ -127,14 +127,14 @@
                     @endif
 
                     {{-- //menentukan hak akses user --}}
-                    {{-- @if(AppHelper::access(['Operator','Kepala Desa']))
-                        <li class="{{$template->menu == 'bayi' ? 'active' : ''}}">
-                            <a href="{{route('bayi.index')}}"  >
-                                <i class="fa fa-child"></i> 
-                                <span>Bayi</span>
+                    @if(AppHelper::access(['Operator']))
+                        <li class="{{$template->menu == 'penduduk' ? 'active' : ''}}">
+                            <a href="{{route('penduduk.index')}}"  >
+                                <i class="fa fa-users"></i> 
+                                <span>Penduduk</span>
                             </a>
                         </li>   
-                    @endif --}}
+                    @endif
 
                     {{-- @if(AppHelper::access(['Operator','Kepala Desa']))
                         <li class="{{$template->menu == 'bayi' ? 'active' : ''}}">
@@ -159,7 +159,7 @@
                     @if(AppHelper::access(['Admin']))
                         <li class="{{$template->menu == 'user' ? 'active' : ''}}">
                             <a href="{{route('user.index')}}"  >
-                                <i class="fa fa-users"></i> 
+                                <i class="fa fa-user"></i> 
                                 <span>Manajemen User</span>
                             </a>
                         </li>   

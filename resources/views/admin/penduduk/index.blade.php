@@ -32,9 +32,11 @@
                             <table class="table" id="datatables">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>Desa</th>
-                                        <th>Status</th>
+                                        <th>NIK</th>
+                                        <th>Nama</th>
+                                        <th>Alamat</th>
+                                        <th>Tanggal Lahir</th>
+                                        <th>Agama</th>
                                         <th>Opsi</th>
                                     </tr>
                                 </thead>
@@ -42,8 +44,10 @@
                                     @foreach($data as $key => $row)
                                         <tr>
                                             <td>{{$key+1}}</td>
-                                            <td>{{$row->nama_desa}}</td>
-                                            <td>{{$row->status_desa}}</td>
+                                            <td>{{$row->nik}}</td>
+                                            <td>{{$row->nama}}</td>
+                                            <td>{{$row->alamat}}</td>
+                                            <td>{{$row->agama}}</td>
                                             <td>
                                                 <a href="{{route("$template->route".'.edit',[$row->id])}}" class="btn btn-success btn-sm">Ubah</a>
                                                 <a href="{{route("$template->route".'.show',[$row->id])}}" class="btn btn-info btn-sm">Lihat</a>

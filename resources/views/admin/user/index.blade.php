@@ -33,6 +33,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
+                                        <th>Username</th>
                                         <th>Nama</th>
                                         <th>Role</th>
                                         <th>Status</th>
@@ -43,6 +44,7 @@
                                     @foreach($data as $key => $row)
                                         <tr>
                                             <td>{{$key+1}}</td>
+                                            <td>{{$row->username}}</td>
                                             <td>{{$row->nama}}</td>
                                             <td>{{$row->role}}</td>
                                             <td>{{$row->status == 1 ? 'Aktif' : 'Tidak Aktif'}}</td>

@@ -27,7 +27,8 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'], function(){
         Route::get('/user/profile','UserController@profile')->name('user.profile');
         Route::resources([
             '/user' => 'UserController',
-            '/desa' => 'DesaController'
+            '/desa' => 'DesaController',
+            '/penduduk' => 'PendudukController'
         ]); 
     });
 });

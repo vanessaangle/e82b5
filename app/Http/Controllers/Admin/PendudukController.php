@@ -6,22 +6,24 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Penduduk;
 use Carbon\Carbon;
+use App\Helpers\AppHelper;
 use App\Desa;
 use Alert;
+use DB;
 
-class DesaController extends Controller
+class PendudukController extends Controller
 {
     private $template = [
         'title' => 'Penduduk',
         'route' => 'penduduk',
-        'menu' => 'Penduduk',
+        'menu' => 'penduduk',
         'icon' => 'fa fa-group',
         'theme' => 'skin-red'
     ];
     
     private function form()
     {
-        $desa = Desa::select('id as value, nama_desa as name')
+        $desa = Desa::select(DB::raw('id as value, nama_desa as name'))
             ->get();
         $agama  = [
             ['value' => 'Hindu','name' => 'Hindu'],
@@ -45,9 +47,9 @@ class DesaController extends Controller
             ['label' => 'Agama','name' => 'agama','type' => 'select', 'option' => $agama],
             ['label' => 'Golongan Darah','name' => 'golongan_darah', 'type' => 'select', 'option' => $golongan],
             ['label' => 'Pekerjaan','name' => 'pekerjaan'],
-            ['label' => 'Scan KTP','name' => 'file_ktp', 'type' => 'file'],
-            ['label' => 'Scan Kartu Keluarga','name' => 'file_kk', 'type' => 'file'],
-            ['label' => 'Scan Akta Kelahiran','name' => 'file_akta', 'type' => 'file'],
+            ['label' => 'Scan KTP','name' => 'file_ktp', 'type' => 'file', 'required' => ['create']],
+            ['label' => 'Scan Kartu Keluarga','name' => 'file_kk', 'type' => 'file', 'required' => ['create']],
+            ['label' => 'Scan Akta Kelahiran','name' => 'file_akta', 'type' => 'file', 'required' => ['create']],
             ['label' => 'Rastra','name' => 'rastra'],
             ['label' => 'Pakaian','name' => 'pakaian'],
             ['label' => 'Kesehatan','name' => 'kesehatan'],
@@ -65,7 +67,7 @@ class DesaController extends Controller
     public function index()
     {
         $template = (object) $this->template;
-        $data = Desa::all();
+        $data = Penduduk::all();
         return view('admin.penduduk.index',compact('template','data'));
     }
 
@@ -78,7 +80,7 @@ class DesaController extends Controller
     {
         $template = (object)$this->template;
         $form = $this->form();
-        return view('admin.desa.create',compact('template','form'));
+        return view('admin.penduduk.create',compact('template','form'));
     }
 
     /**
@@ -89,16 +91,35 @@ class DesaController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nama_desa' => 'required',
-            'status_desa' => 'required',
-            'lat' => 'required',
-            'lng' => 'required'
+        $this->validate($request,[
+            'kk' => 'required',
+            'nik' => 'required',
+            'nama' => 'required',
+            'alamat' => 'required',
+            'tgl_lahir' => 'required',
+            'agama' => 'required',
+            'golongan_darah' => 'required',
+            'pekerjaan' => 'required',
+            'file_ktp' => 'required',
+            'file_kk' => 'required',
+            'file_akta' => 'required',
+            'rastra' => 'required',
+            'pakaian' => 'required',
+            'kesehatan' => 'required',
+            'tempat_tinggal' => 'required',
+            'pendidikan' => 'required',
+            'status' => 'required',
+            'desa_id' => 'required'
         ]);
         $data = $request->all();
-        Desa::create($data);
+        $uploaded = AppHelper::uploader($this->form(),$request);
+        $data['file_ktp'] = $uploaded['file_ktp'];
+        $data['file_kk'] = $uploaded['file_kk'];
+        $data['file_akta'] = $uploaded['file_akta'];
+        $data['user_id'] = auth()->user()->id;
+        Penduduk::create($data);
         Alert::make('success','Berhasil menyimpan data');
-        return redirect(route('desa.index'));
+        return redirect(route('penduduk.index'));
     }
 
     /**
@@ -110,8 +131,8 @@ class DesaController extends Controller
     public function show($id)
     {
         $template = (object)$this->template;
-        $data = Desa::findOrFail($id);
-        return view('admin.desa.show',compact('template','data'));
+        $data = Penduduk::findOrFail($id);
+        return view('admin.penduduk.show',compact('template','data'));
     }
 
     /**
@@ -122,10 +143,10 @@ class DesaController extends Controller
      */
     public function edit($id)
     {
-        $data = Desa::findOrFail($id);
+        $data = Penduduk::findOrFail($id);
         $template = (object)$this->template;
         $form = $this->form();
-        return view('admin.desa.edit',compact('template','form','data')); 
+        return view('admin.penduduk.edit',compact('template','form','data')); 
     }
 
     /**
@@ -137,16 +158,32 @@ class DesaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'nama_desa' => 'required',
-            'status_desa' => 'required',
-            'lat' => 'required',
-            'lng' => 'required'
+        $this->validate($request,[
+            'kk' => 'required',
+            'nik' => 'required',
+            'nama' => 'required',
+            'alamat' => 'required',
+            'tgl_lahir' => 'required',
+            'agama' => 'required',
+            'golongan_darah' => 'required',
+            'pekerjaan' => 'required',
+            'rastra' => 'required',
+            'pakaian' => 'required',
+            'kesehatan' => 'required',
+            'tempat_tinggal' => 'required',
+            'pendidikan' => 'required',
+            'status' => 'required',
+            'desa_id' => 'required'
         ]);
         $data = $request->all();
-        Desa::find($id)->update($data);
-        Alert::make('success','Berhasil mengubah data');
-        return redirect(route('desa.index'));
+        $penduduk = Penduduk::find($id);
+        $uploaded = AppHelper::uploader($this->form(),$request);
+        $data['file_ktp'] = array_key_exists('file_ktp',$uploaded) ? $uploaded['file_ktp'] : $penduduk->file_ktp;
+        $data['file_kk'] = array_key_exists('file_kk',$uploaded) ? $uploaded['file_kk'] : $penduduk->file_kk;
+        $data['file_akta'] = array_key_exists('file_akta',$uploaded) ? $uploaded['file_akta'] : $penduduk->file_akta;
+        $penduduk->update($data);
+        Alert::make('success','Berhasil menyimpan data');
+        return redirect(route('penduduk.index'));
     }
 
     /**

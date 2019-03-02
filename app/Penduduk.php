@@ -8,27 +8,7 @@ class Penduduk extends Model
 {
     protected $table = 'penduduk';
 
-    protected $fillable = [
-        'kk',
-        'nik',
-        'nama',
-        'alamat',
-        'tgl_lahir',
-        'agama',
-        'golongan_darah',
-        'pekerjaan',
-        'file_ktp',
-        'file_kk',
-        'file_akta',
-        'rastra',
-        'pakaian',
-        'kesehatan',
-        'tempat_tinggal',
-        'pendidikan',
-        'status',
-        'desa_id',
-        'user_id'
-    ];
+    protected $guarded = [];
 
     public function user()
     {
