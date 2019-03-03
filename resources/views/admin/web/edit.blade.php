@@ -20,6 +20,7 @@
         <section class="content">
            <div class="row">
                 <div class="col-md-12">
+                    {!!Alert::showBox()!!}
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
