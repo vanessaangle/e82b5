@@ -8,6 +8,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return 'INI MAIN WEB';
+        return view('web.index');
     }
 }
