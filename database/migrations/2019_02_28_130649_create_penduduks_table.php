@@ -40,7 +40,7 @@ class CreatePenduduksTable extends Migration
             $table->boolean('ansuransi')->nullable();
             $table->boolean('pkh')->nullable();
             $table->boolean('raskin')->nullable();
-            $table->boolean('kjr')->nullable();
+            $table->boolean('kur')->nullable();
             $table->integer('desa_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->timestamps();
