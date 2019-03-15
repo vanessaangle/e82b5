@@ -32,6 +32,15 @@ class CreatePenduduksTable extends Migration
             $table->string('tempat_tinggal');
             $table->string('pendidikan');
             $table->string('status');
+            $table->boolean('kks_kps')->nullable();
+            $table->boolean('kip_bsm')->nullable();
+            $table->boolean('kis_bpjs')->nullable();
+            $table->boolean('kis_mandiri')->nullable();
+            $table->boolean('jamsostek')->nullable();
+            $table->boolean('ansuransi')->nullable();
+            $table->boolean('pkh')->nullable();
+            $table->boolean('raskin')->nullable();
+            $table->boolean('kjr')->nullable();
             $table->integer('desa_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->timestamps();

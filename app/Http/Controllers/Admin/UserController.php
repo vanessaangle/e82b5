@@ -51,7 +51,7 @@ class UserController extends Controller
     {
         $template = (object) $this->template;
         $data = User::all();
-        return view('admin.penduduk.index',compact('template','data'));
+        return view('admin.user.index',compact('template','data'));
     }
 
     /**
