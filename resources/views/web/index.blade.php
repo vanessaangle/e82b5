@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>NewBiz Bootstrap Template</title>
+  <title>Sistem Informasi Geografis Pemetaan Penduduk Miskin Kabupaten Badung</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
+  <meta content="GIS" name="keywords">
   <meta content="" name="description">
 
   <!-- Favicons -->
-  <link href="{{asset('web')}}/img/favicon.png" rel="icon">
   <link href="{{asset('web')}}/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -23,6 +22,7 @@
   <link href="{{asset('web')}}/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
   <link href="{{asset('web')}}/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="{{asset('web')}}/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="{{asset('favicon.png')}}">
 
   <!-- Main Stylesheet File -->
   <link href="{{asset('web')}}/css/style.css" rel="stylesheet">
@@ -36,7 +36,7 @@
 </head>
 
 <body>
-
+  
   <!--==========================
   Header
   ============================-->
@@ -46,14 +46,14 @@
       <div class="logo float-left">
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <h1 class="text-light"><a href="#header"><span>NewBiz</span></a></h1> -->
-        <a href="#intro" class="scrollto"><img src="{{asset('web')}}/img/logo.png" alt="" class="img-fluid"></a>
+        <a href="#intro" class="scrollto"><img src="{{asset('web')}}/img/logo.png" alt="" class="img-fluid"  style="margin: -5px 0; max-height:50px;"></a>
       </div>
 
       <nav class="main-nav float-right d-none d-lg-block">
         <ul>
           <li class="active"><a href="#intro">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#services">Services</a></li>
+          <li><a href="#about">Lapor</a></li>
+          {{-- <li><a href="#services">Services</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#team">Team</a></li>
           <li class="drop-down"><a href="">Drop Down</a>
@@ -73,7 +73,7 @@
               <li><a href="#">Drop Down 5</a></li>
             </ul>
           </li>
-          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="#contact">Contact Us</a></li> --}}
         </ul>
       </nav><!-- .main-nav -->
       
@@ -91,10 +91,9 @@
       </div>
 
       <div class="intro-info">
-        <h2>We provide<br><span>solutions</span><br>for your business!</h2>
+        <h2>Ayo, laporkan<br>masyarakat yang belum terdata sebagai penduduk miskin !</h2>
         <div>
-          <a href="#about" class="btn-get-started scrollto">Get Started</a>
-          <a href="#services" class="btn-services scrollto">Our Services</a>
+          <a href="#about" class="btn-get-started scrollto">Lapor</a>
         </div>
       </div>
 
@@ -110,43 +109,43 @@
       <div class="container">
 
         <header class="section-header">
-          <h3>About Us</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <h3>Mari Bersama Bantu Pemerintah Untuk Mendata Masyarakat Yang Kurang Mampu</h3>
+          <p> Dengan mengisi formulir dibawah ini anda telah membantu masyarakat untuk mendapatkan penghidupan yang layak dari pemerintah Kabupaten Badung</p>
         </header>
 
         <div class="row about-container">
 
           <div class="col-lg-6 content order-lg-1 order-2">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-
-            <div class="icon-box wow fadeInUp">
-              <div class="icon"><i class="fa fa-shopping-bag"></i></div>
-              <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
-              <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+            <div class="form">
+              <div id="sendmessage">Your message has been sent. Thank you!</div>
+              <div id="errormessage"></div>
+              <form action="" method="post" role="form" class="contactForm">
+                <div class="form-row">
+                  <div class="form-group col-lg-6">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                    <div class="validation"></div>
+                  </div>
+                  <div class="form-group col-lg-6">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                    <div class="validation"></div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                  <div class="validation"></div>
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                  <div class="validation"></div>
+                </div>
+                <div class="text-center"><button type="submit" title="Send Message">Send Message</button></div>
+              </form>
             </div>
-
-            <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
-              <div class="icon"><i class="fa fa-photo"></i></div>
-              <h4 class="title"><a href="">Magni Dolores</a></h4>
-              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-            </div>
-
-            <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
-              <div class="icon"><i class="fa fa-bar-chart"></i></div>
-              <h4 class="title"><a href="">Dolor Sitema</a></h4>
-              <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
-            </div>
-
           </div>
-
-          <div class="col-lg-6 background order-lg-2 order-1 wow fadeInUp">
-            <img src="{{asset('web')}}/img/about-img.svg" class="img-fluid" alt="">
           </div>
         </div>
 
-        <div class="row about-extra">
+        {{-- <div class="row about-extra">
           <div class="col-lg-6 wow fadeInUp">
             <img src="{{asset('web')}}/img/about-extra-1.svg" class="img-fluid" alt="">
           </div>
@@ -179,7 +178,7 @@
             </p>
           </div>
           
-        </div>
+        </div> --}}
 
       </div>
     </section><!-- #about -->
@@ -187,7 +186,7 @@
     <!--==========================
       Services Section
     ============================-->
-    <section id="services" class="section-bg">
+    {{-- <section id="services" class="section-bg">
       <div class="container">
 
         <header class="section-header">
@@ -245,12 +244,13 @@
         </div>
 
       </div>
-    </section><!-- #services -->
+    </section> --}}
+    <!-- #services -->
 
     <!--==========================
       Why Us Section
     ============================-->
-    <section id="why-us" class="wow fadeIn">
+    {{-- <section id="why-us" class="wow fadeIn">
       <div class="container">
         <header class="section-header">
           <h3>Why choose us?</h3>
@@ -319,12 +319,12 @@
         </div>
 
       </div>
-    </section>
+    </section> --}}
 
     <!--==========================
       Portfolio Section
     ============================-->
-    <section id="portfolio" class="clearfix">
+    {{-- <section id="portfolio" class="clearfix">
       <div class="container">
 
         <header class="section-header">
@@ -473,12 +473,13 @@
         </div>
 
       </div>
-    </section><!-- #portfolio -->
+    </section> --}}
+    <!-- #portfolio -->
 
     <!--==========================
       Clients Section
     ============================-->
-    <section id="testimonials" class="section-bg">
+    {{-- <section id="testimonials" class="section-bg">
       <div class="container">
 
         <header class="section-header">
@@ -542,12 +543,13 @@
 
 
       </div>
-    </section><!-- #testimonials -->
+    </section> --}}
+    <!-- #testimonials -->
 
     <!--==========================
       Team Section
     ============================-->
-    <section id="team">
+    {{-- <section id="team">
       <div class="container">
         <div class="section-header">
           <h3>Team</h3>
@@ -631,12 +633,14 @@
         </div>
 
       </div>
-    </section><!-- #team -->
+    </section> --}}
+    
+    <!-- #team -->
 
     <!--==========================
       Clients Section
     ============================-->
-    <section id="clients" class="section-bg">
+    {{-- <section id="clients" class="section-bg">
 
       <div class="container">
 
@@ -699,12 +703,12 @@
 
       </div>
 
-    </section>
+    </section> --}}
 
     <!--==========================
       Contact Section
     ============================-->
-    <section id="contact">
+    {{-- <section id="contact">
       <div class="container-fluid">
 
         <div class="section-header">
@@ -765,14 +769,14 @@
         </div>
 
       </div>
-    </section><!-- #contact -->
+    </section><!-- #contact --> --}}
 
   </main>
 
   <!--==========================
     Footer
   ============================-->
-  <footer id="footer">
+  {{-- <footer id="footer">
     <div class="footer-top">
       <div class="container">
         <div class="row">
@@ -839,7 +843,7 @@
         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
-  </footer><!-- #footer -->
+  </footer><!-- #footer --> --}}
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
   <!-- Uncomment below i you want to use a preloader -->
