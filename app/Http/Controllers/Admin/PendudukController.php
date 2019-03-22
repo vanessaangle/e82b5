@@ -42,6 +42,12 @@ class PendudukController extends Controller
             ['value' => '0','name' => 'Tidak'],
             ['value' => '1','name' => 'Ya'],
         ];
+
+        $status = [
+            ['value' => 'Belum Verifikasi', 'name' => 'Belum Verifikasi'],
+            ['value' => 'Sudah Verifikasi', 'name' => 'Sudah Verifikasi']
+        ];
+
         return [
             ['label' => 'Nomor Kartu Keluarga (KK)','name' => 'kk'],
             ['label' => 'Nomor Induk Kewarganegaraan (NIK)','name' => 'nik'],
@@ -59,17 +65,17 @@ class PendudukController extends Controller
             ['label' => 'Kesehatan','name' => 'kesehatan'],
             ['label' => 'Tempat Tinggal','name' => 'tempat_tinggal'],
             ['label' => 'Pendidikan','name' => 'pendidikan'],
-            ['label' => 'Status','name' => 'status'],
             ['label' => 'Kartu Keluarga Sejahtera (KKS) / Kartu Perlindungan Sosial (KPS)', 'name' => 'kks_kps', 'type' => 'select', 'option' => $options],
             ['label' => 'Kartu Indonesia Pintar (KIP) / Bantuan Siswa Miskin (BSM)', 'name' => 'kip_bsm', 'type' => 'select', 'option' => $options],
             ['label' => 'Kartu Indonesia Sehat (KIS) / BPJS Kesehatan / Jamkesmas', 'name' => 'kis_bpjs', 'type' => 'select', 'option' => $options],
-            ['label' => 'BPSJ Kesehatan peserta mandiri', 'name' => 'bpjs_mandiri', 'type' => 'select', 'option' => $options],
+            ['label' => 'BPSJ Kesehatan peserta mandiri', 'name' => 'kis_mandiri', 'type' => 'select', 'option' => $options],
             ['label' => 'Jaminan sosial tenaga kerja (Jamsostek) / BPJS ketenagakerjaan','name' => 'jamsostek', 'type' => 'select', 'option' => $options],
             ['label' => 'Asuransi Kesehatan Lainnya','name' => 'ansuransi', 'type' => 'select', 'option' => $options],
             ['label' => 'Program Keluarga Harapan (PKH)','name' => 'pkh', 'type' => 'select', 'option' => $options],
             ['label' => 'Beras untuk orang miskin (Raskin)','name' => 'raskin', 'type' => 'select', 'option' => $options],
             ['label' => 'Kredit Usaha Rakyat (KUR)','name' => 'kur', 'type' => 'select', 'option' => $options],
             ['label' => 'Desa','name' => 'desa_id','type' => 'select','option' => $desa],
+            ['label' => 'Status','name' => 'status', 'type' => 'select', 'option' => $status],
         ];
     }
     /**
