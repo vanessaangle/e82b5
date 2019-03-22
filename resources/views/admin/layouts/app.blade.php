@@ -136,7 +136,7 @@
                         </li>   
                     @endif
 
-                    @if(AppHelper::access(['Operator']))
+                    @if(AppHelper::access(['Operator','Admin']))
                         <li class="{{$template->menu == 'web' ? 'active' : ''}}">
                             <a href="{{route('web.index')}}"  >
                                 <i class="fa fa-globe"></i> 
@@ -144,16 +144,6 @@
                             </a>
                         </li>   
                     @endif
-                    
-                    {{-- //menentukan hak akses user --}}
-                    {{-- @if(AppHelper::access(['Admin']))
-                        <li class="{{$template->menu == 'vaksin' ? 'active' : ''}}">
-                            <a href="{{route('vaksin.index')}}"  >
-                                <i class="fa fa-medkit"></i> 
-                                <span>Manajemen Vaksin</span>
-                            </a>
-                        </li>   
-                    @endif --}}
                     
                     {{-- //menentukan hak akses user --}}
                     @if(AppHelper::access(['Admin']))
@@ -234,6 +224,8 @@
             autoclose: true,
             format : 'yyyy-mm-dd'
         })
+
+        $('ckeditor').ckeditor();
 
         $('.number-only').keyup(function(){
             var value = $(this).val();

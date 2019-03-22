@@ -15,6 +15,7 @@
 
   <!-- Bootstrap CSS File -->
   <link href="{{asset('web')}}/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{asset('admin-lte')}}/bower_components/bootstrap/dist/css/bootstrap.min.css">
 
   <!-- Libraries CSS Files -->
   <link href="{{asset('web')}}/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -22,6 +23,8 @@
   <link href="{{asset('web')}}/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
   <link href="{{asset('web')}}/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="{{asset('web')}}/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="{{asset('admin-lte')}}/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
   <link rel="shortcut icon" href="{{asset('favicon.png')}}">
 
   <!-- Main Stylesheet File -->
@@ -53,27 +56,7 @@
         <ul>
           <li class="active"><a href="#intro">Home</a></li>
           <li><a href="#about">Lapor</a></li>
-          {{-- <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#team">Team</a></li>
-          <li class="drop-down"><a href="">Drop Down</a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="drop-down"><a href="#">Drop Down 2</a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-              <li><a href="#">Drop Down 5</a></li>
-            </ul>
-          </li>
-          <li><a href="#contact">Contact Us</a></li> --}}
+          
         </ul>
       </nav><!-- .main-nav -->
       
@@ -87,7 +70,7 @@
     <div class="container">
 
       <div class="intro-img">
-        <img src="{{asset('web')}}/img/intro-img.svg" alt="" class="img-fluid">
+        <img src="{{asset($data->gambar_depan)}}" alt="" class="img-fluid">
       </div>
 
       <div class="intro-info">
@@ -101,7 +84,22 @@
   </section><!-- #intro -->
 
   <main id="main">
-
+    <!--==========================
+      About Us Section
+    ============================-->
+    <section id="about">
+        <div class="container">
+  
+          <header class="section-header">
+            <h3>Dinas Sosial Kabupaten Baudung</h3>
+            <p>Tentang Kami</p>
+          </header>
+  
+          <div class="row about-container text-center"> 
+              {{$data->tentang}}
+          </div>
+        </div>
+      </section><!-- #about -->
     <!--==========================
       About Us Section
     ============================-->
@@ -114,31 +112,16 @@
         </header>
 
         <div class="row about-container">
-
+          {!!Alert::showBox()!!}
           <div class="col-lg-6 content order-lg-1 order-2">
-            <div class="form">
-              <div id="sendmessage">Your message has been sent. Thank you!</div>
+            <div class="form">              
               <div id="errormessage"></div>
-              <form action="" method="post" role="form" class="contactForm">
-                <div class="form-row">
-                  <div class="form-group col-lg-6">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                    <div class="validation"></div>
-                  </div>
-                  <div class="form-group col-lg-6">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                    <div class="validation"></div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                  <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                  <div class="validation"></div>
-                </div>
-                <div class="text-center"><button type="submit" title="Send Message">Send Message</button></div>
+              <form action="{{route('home.post')}}" method="post" role="form" enctype="multipart/form-data">
+                @csrf
+                @foreach($form as $value)
+                    {!!Render::form($value)!!}
+                @endforeach
+                    <button type="submit" class="btn btn-primary">Simpan</button>
               </form>
             </div>
           </div>
@@ -863,9 +846,16 @@
   <script src="{{asset('web')}}/lib/lightbox/js/lightbox.min.js"></script>
   <!-- Contact Form JavaScript File -->
   <script src="{{asset('web')}}/contactform/contactform.js"></script>
-
+  <script src="{{asset('admin-lte')}}/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
   <!-- Template Main Javascript File -->
   <script src="{{asset('web')}}/js/main.js"></script>
-
+  <script>
+    $(document).ready(function(){
+      $('.datepicker').datepicker({
+            autoclose: true,
+            format : 'yyyy-mm-dd'
+        })
+    })
+  </script>
 </body>
 </html>

@@ -11,6 +11,7 @@
 |
 */
 Route::get('/','HomeController@index');
+Route::post('/post','HomeController@post')->name('home.post');
 
 Route::group(['prefix' => 'admin','namespace' => 'Admin'], function(){
     Route::get('/',function(){
