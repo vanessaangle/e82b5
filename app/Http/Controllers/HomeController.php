@@ -58,7 +58,18 @@ class HomeController extends Controller
     {
         $data = Web::first();
         $form = (object) $this->form();
-        return view('web.index', compact('data','form'));
+
+        $desa = Desa::all();
+        $penduduk = [];
+        foreach($desa as $d){
+            $penduduk[] = [
+                'lat' => $d->lat,
+                'lng' => $d->lng,
+                'title' => "Desa ".$d->nama_desa." (".count($d->penduduk)." Penduduk Miskin)"
+            ];
+        }
+        $penduduk = json_encode($penduduk);
+        return view('web.index', compact('data','form','penduduk'));
     }
 
     public function post(Request $request){

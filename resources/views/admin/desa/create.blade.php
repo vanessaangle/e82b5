@@ -68,7 +68,7 @@
         })
     })
     </script>
-     <script>
+    <script>
         var map, marker;
          function initMap(){
             console.log('INIT MAP');
