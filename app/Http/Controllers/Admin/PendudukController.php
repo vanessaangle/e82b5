@@ -74,7 +74,7 @@ class PendudukController extends Controller
             ['label' => 'Program Keluarga Harapan (PKH)','name' => 'pkh', 'type' => 'radio', 'option' => $options],
             ['label' => 'Beras untuk orang miskin (Raskin)','name' => 'raskin', 'type' => 'radio', 'option' => $options],
             ['label' => 'Kredit Usaha Rakyat (KUR)','name' => 'kur', 'type' => 'radio', 'option' => $options],
-            ['label' => 'Desa','name' => 'desa_id','type' => 'radio','option' => $desa],
+            ['label' => 'Desa','name' => 'desa_id','type' => 'select','option' => $desa],
             ['label' => 'Status','name' => 'status', 'type' => 'radio', 'option' => $status],
         ];
     }
