@@ -37,6 +37,7 @@
                                         <th>Alamat</th>
                                         <th>Tanggal Lahir</th>
                                         <th>Agama</th>
+                                        <th>Status</th>
                                         <th>Opsi</th>
                                     </tr>
                                 </thead>
@@ -48,6 +49,7 @@
                                             <td>{{$row->nama}}</td>
                                             <td>{{$row->alamat}}</td>
                                             <td>{{$row->agama}}</td>
+                                            <td>{{$row->status}}</td>
                                             <td>
                                                 <a href="{{route("$template->route".'.edit',[$row->id])}}" class="btn btn-success btn-sm">Ubah</a>
                                                 <a href="{{route("$template->route".'.show',[$row->id])}}" class="btn btn-info btn-sm">Lihat</a>

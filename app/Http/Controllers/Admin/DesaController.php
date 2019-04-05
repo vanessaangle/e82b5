@@ -23,7 +23,7 @@ class DesaController extends Controller
         return [
             ['label' => 'Nama Desa', 'name' => 'nama_desa'],
             ['label' => 'Status Desa', 'name' => 'status_desa'],
-            ['label' => 'Lokasi Desa', 'type' => 'map'],
+            ['label' => 'Lokasi Desa', 'type' => 'map' ,'hideAdd' => false],
         ];
     }
     /**

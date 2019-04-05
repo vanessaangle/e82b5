@@ -111,8 +111,8 @@ class PendudukController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'kk' => 'required',
-            'nik' => 'required',
+            'kk' => 'required|unique:penduduk,kk',
+            'nik' => 'required|unique:penduduk,nik',
             'nama' => 'required',
             'alamat' => 'required',
             'tgl_lahir' => 'required',
@@ -178,8 +178,8 @@ class PendudukController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'kk' => 'required',
-            'nik' => 'required',
+            'kk' => 'required|unique:penduduk,kk,'.$id,
+            'nik' => 'required|unique:penduduk,nik,'.$id,
             'nama' => 'required',
             'alamat' => 'required',
             'tgl_lahir' => 'required',

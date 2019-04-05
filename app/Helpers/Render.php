@@ -195,8 +195,8 @@ class Render
 			<div class='form-group'>							
 				<label for=\"$this->name\">$this->label</label>
 				<div id='google_map' style='height:400px;'></div>
-				<input type='hidden' readonly name='lat' class='lat col-sm-6'/>
-				<input type='hidden' readonly name='lng' class='lng col-sm-6'/>    	
+				<input type='text' name='lat' class='lat col-sm-6'/>
+				<input type='text' name='lng' class='lng col-sm-6'/>    	
 			</div>
         ";
     }
