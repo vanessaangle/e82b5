@@ -59,7 +59,7 @@ class DesaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_desa' => 'required',
+            'nama_desa' => 'required|unique:desa,nama_desa',
             'status_desa' => 'required',
             'lat' => 'required',
             'lng' => 'required'

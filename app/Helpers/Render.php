@@ -67,6 +67,10 @@ class Render
             if (($self->method == 'add' && $self->hideAdd == false) || ($self->method == 'edit' && $self->hideEdit == false)) {
                 return $self->file($data);
             }
+        }else if($self->type == "radio"){
+            if (($self->method == 'add' && $self->hideAdd == false) || ($self->method == 'edit' && $self->hideEdit == false)) {
+                return $self->radio($data);
+            }
         }
     }
 
@@ -284,6 +288,32 @@ class Render
 				</select>   	
 			</div>
         ";
+    }
+
+    public function radio($data){
+        $this->required = $this->required == "required" ? 'required="required"' : "";
+        $opt = (object) $this->option;
+        if($data == null){
+            $value = old("$this->name");
+        }else{
+            $value = $data->{$this->name};
+        }
+        $option = '';
+        foreach ($opt as $list) {
+            $option .= '
+            <div class="radio">
+                <label>
+                    <input type="radio" name="'.$this->name.'"  value="'.$list['value'].'" '.($value == $list['value'] ? 'checked' : '').'>
+                    '.$list['name'].'
+                </label>
+            </div>';
+        }
+        return '
+        <div class="form-group">
+            <label for="'.$this->name.'">'.$this->label.'</label>
+            '.$option.'
+        </div>
+        ';
     }
 
     public function selectbox($id, $tipe_form, $catatan_text, $option, $value_select = "", $name = "")
