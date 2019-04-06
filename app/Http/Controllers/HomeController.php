@@ -98,7 +98,7 @@ class HomeController extends Controller
         $data['file_ktp'] = $uploaded['file_ktp'];
         $data['file_kk'] = $uploaded['file_kk'];
         $data['file_akta'] = $uploaded['file_akta'];
-        $data['user_id'] = auth()->user()->id;
+        $data['user_id'] = null;
         Penduduk::create($data);
         Alert::make('success','Berhasil menyimpan data');
         return back();

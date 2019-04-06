@@ -42,7 +42,7 @@ class CreatePenduduksTable extends Migration
             $table->boolean('raskin')->nullable();
             $table->boolean('kur')->nullable();
             $table->integer('desa_id')->unsigned();
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned()->nullable();
             $table->timestamps();
 
             $table->foreign('desa_id')
