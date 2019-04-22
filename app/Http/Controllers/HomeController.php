@@ -61,15 +61,22 @@ class HomeController extends Controller
 
         $desa = Desa::all();
         $penduduk = [];
-        foreach($desa as $d){
+        $label = [];
+        $datasets = [];
+        foreach($desa as $key => $d){
             $penduduk[] = [
                 'lat' => $d->lat,
                 'lng' => $d->lng,
                 'title' => "Desa ".$d->nama_desa." (".count($d->penduduk)." Penduduk Miskin)"
             ];
+            $label[$key] = $d->nama_desa;
+            $datasets[$key] = $d->penduduk()->count();
         }
         $penduduk = json_encode($penduduk);
-        return view('web.index', compact('data','form','penduduk'));
+        $label = json_encode($label);
+        $datasets = json_encode($datasets);
+        
+        return view('web.index', compact('data','form','penduduk','label','datasets'));
     }
 
     public function post(Request $request){

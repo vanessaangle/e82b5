@@ -44,10 +44,10 @@
                                 <tbody>
                                     @foreach($data as $key => $row)
                                         <tr>
-                                            <td>{{$key+1}}</td>
                                             <td>{{$row->nik}}</td>
                                             <td>{{$row->nama}}</td>
                                             <td>{{$row->alamat}}</td>
+                                            <td>{{$row->tgl_lahir}}</td>
                                             <td>{{$row->agama}}</td>
                                             <td>{{$row->status}}</td>
                                             <td>

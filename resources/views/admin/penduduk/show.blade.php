@@ -55,7 +55,7 @@
                                             <td>{{$data->nik}}</td>
                                         </tr>
                                         <tr>
-                                            <td>Nama/td>
+                                            <td>Nama</td>
                                             <td>:</td>
                                             <td>{{$data->nama}}</td>
                                         </tr>
