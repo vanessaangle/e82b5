@@ -21,7 +21,17 @@ class DashboardController extends Controller
 
     public function index()
     {
+        $desa = Desa::all();
+        $penduduk = [];
+        $label = [];
+        $datasets = [];
+        foreach($desa as $key => $d){
+            $label[$key] = $d->nama_desa;
+            $datasets[$key] = $d->penduduk()->count();
+        }
+        $label = json_encode($label);
+        $datasets = json_encode($datasets);
         $template = (object) $this->template;
-        return view('admin.dashboard.index',compact('template'));
+        return view('admin.dashboard.index',compact('template','label','datasets'));
     }
 }

@@ -39,7 +39,7 @@
   <![endif]-->
 
     <!-- Google Font -->
-    <link rel="stylesheet" href="{{asset('admin-lte')}}/https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
 <body class="hold-transition {{$template->theme}} sidebar-mini">
@@ -215,7 +215,7 @@
     <!-- AdminLTE App -->
     <script src="{{asset('admin-lte')}}/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="{{asset('admin-lte')}}/dist/js/pages/dashboard.js"></script>
+    {{-- <script src="{{asset('admin-lte')}}/dist/js/pages/dashboard.js"></script> --}}
     <!-- AdminLTE for demo purposes -->
     <script src="{{asset('admin-lte')}}/dist/js/demo.js"></script>
     <script>
@@ -225,7 +225,7 @@
             format : 'yyyy-mm-dd'
         })
 
-        $('ckeditor').ckeditor();
+        // $('ckeditor').ckeditor();
 
         $('.number-only').keyup(function(){
             var value = $(this).val();
