@@ -17,7 +17,7 @@ class CreateWebsTable extends Migration
             $table->increments('id');
             $table->text('gambar_depan');
             $table->text('tentang');
-            $table->string('telepon',12);
+            $table->string('telepon',15);
             $table->string('email',255);
             $table->text('alamat');
             $table->timestamps();
