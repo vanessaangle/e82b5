@@ -15,10 +15,10 @@ class CreateDesasTable extends Migration
     {
         Schema::create('desa', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama_desa');
-            $table->string('status_desa');
-            $table->string('lat');
-            $table->string('lng');
+            $table->string('nama_desa',100);
+            $table->string('status_desa',10);
+            $table->string('lat',21);
+            $table->string('lng',21);
             $table->timestamps();
         });
     }
