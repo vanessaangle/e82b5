@@ -15,23 +15,23 @@ class CreatePenduduksTable extends Migration
     {
         Schema::create('penduduk', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('kk');
-            $table->string('nik');
-            $table->string('nama');
+            $table->string('kk',16);
+            $table->string('nik',16);
+            $table->string('nama',50);
             $table->text('alamat');
             $table->date('tgl_lahir');
-            $table->string('agama');
-            $table->string('golongan_darah');
-            $table->string('pekerjaan');
+            $table->string('agama',20);
+            $table->string('golongan_darah',2);
+            $table->string('pekerjaan',30);
             $table->text('file_ktp');
             $table->text('file_kk');
             $table->text('file_akta');
-            $table->string('rastra');
-            $table->string('pakaian');
-            $table->string('kesehatan');
-            $table->string('tempat_tinggal');
-            $table->string('pendidikan');
-            $table->string('status');
+            $table->string('rastra',20);
+            $table->string('pakaian',20);
+            $table->string('kesehatan',20);
+            $table->string('tempat_tinggal',20);
+            $table->string('pendidikan',20);
+            $table->string('status',15);
             $table->boolean('kks_kps')->nullable();
             $table->boolean('kip_bsm')->nullable();
             $table->boolean('kis_bpjs')->nullable();
