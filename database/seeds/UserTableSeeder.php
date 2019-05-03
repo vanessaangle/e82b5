@@ -17,7 +17,7 @@ class UserTableSeeder extends Seeder
             User::create([
                 'nama' => 'Administrator',
                 'alamat' => 'Jalan Puputan Renon No 86 Denpasar',
-                'telepon' => '6285737939345',
+                'telepon' => '081558776776',
                 'tanggal_lahir' => '1994-04-10',
                 'tempat_lahir' => 'Denpasar',
                 'username' => 'oka',
