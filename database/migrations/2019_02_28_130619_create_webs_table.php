@@ -22,6 +22,7 @@ class CreateWebsTable extends Migration
             $table->text('alamat');
             $table->timestamps();
         });
+        
     }
 
     /**
