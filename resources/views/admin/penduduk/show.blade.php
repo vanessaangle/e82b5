@@ -124,11 +124,66 @@
                                             <td>:</td>
                                             <td>{{$data->pendidikan}}</td>
                                         </tr>
-                                         <tr>
+                                        <tr>
+                                            <td>Kartu Keluarga Sejahtera (KKS) / Kartu Perlindungan Sosial (KPS)</td>
+                                            <td>:</td>
+                                            <td>{{$data->kks_kps ? 'Ya' : 'Tidak'}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Kartu Indonesia Pintar (KIP) / Bantuan Siswa Miskin (BSM)</td>
+                                            <td>:</td>
+                                            <td>{{$data->kip_bsm ? 'Ya' : 'Tidak'}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Kartu Indonesia Sehat (KIS) / BPJS Kesehatan / Jamkesmas</td>
+                                            <td>:</td>
+                                            <td>{{$data->kis_bpjs ? 'Ya' : 'Tidak'}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>BPSJ Kesehatan peserta mandiri</td>
+                                            <td>:</td>
+                                            <td>{{$data->kis_mandiri ? 'Ya' : 'Tidak'}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jaminan sosial tenaga kerja (Jamsostek) / BPJS ketenagakerjaan</td>
+                                            <td>:</td>
+                                            <td>{{$data->jamsostek ? 'Ya' : 'Tidak'}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Asuransi Kesehatan Lainnya</td>
+                                            <td>:</td>
+                                            <td>{{$data->ansuransi ? 'Ya' : 'Tidak'}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Program Keluarga Harapan (PKH)</td>
+                                            <td>:</td>
+                                            <td>{{$data->pkh ? 'Ya' : 'Tidak'}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Beras untuk orang miskin (Raskin)</td>
+                                            <td>:</td>
+                                            <td>{{$data->raskin ? 'Ya' : 'Tidak'}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Kredit Usaha Rakyat (KUR)</td>
+                                            <td>:</td>
+                                            <td>{{$data->kur ? 'Ya' : 'Tidak'}}</td>
+                                        </tr>
+                                        <tr>
                                             <td>Status</td>
                                             <td>:</td>
                                             <td>{{$data->status}}</td>
                                         </tr>
+                                        @if(Auth::user()->role == 'Operator' && $data->status == 'Belum Verifikasi')
+                                            <tr>
+                                                <td>Verifikasi</td>
+                                                <td>:</td>
+                                                <td>
+                                                    <button class="btn btn-danger" id="tolak">Tolak</button>
+                                                    <button class="btn btn-success" id="verifikasi">Terima</button>
+                                                </td>
+                                            </tr>
+                                        @endif
                                     </tbody>
                                 </tbody>
                             </table>
@@ -136,7 +191,12 @@
                         <div class="box-footer">                                
                             <a href="{{ url()->previous() }}" class="btn btn-default">Kembali</a>
                         </div>
-                        
+                        <form action="{{url('admin/penduduk/'.$data->id.'/tolak')}}" method="POST" id="formTolak">
+                            @csrf
+                        </form>
+                        <form action="{{url('admin/penduduk/'.$data->id.'/terima')}}" method="POST" id="formTerima">
+                            @csrf
+                        </form>
                     </div>
                 </div>
            </div>
@@ -148,38 +208,21 @@
 @push('js')
     <!-- page script -->
      <script>
-        var map, marker;
-         function initMap(){
-            console.log('INIT MAP');
-            var myLatLng = {lat: {{$data->lat}}, lng: {{$data->lng}} };         
-            $('.lat').val(myLatLng.lat);
-            $('.lng').val(myLatLng.lng); 
-            map = new google.maps.Map(document.getElementById('google_map'), {
-                zoom: 16,
-                center: myLatLng
-            });  
+        function tolak(id){
+            if(confirm('Apakah anda ingin menolak ?')){
 
-            marker = new google.maps.Marker({
-                position: myLatLng,
-                map: map,
-                draggable:false,
-                title: 'Lokasi Desa'
-            });
-            marker.setPosition(event.latLng);
+            }
         }
-    </script>
-    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDX5i1N1RR3DSQTIRu0ZbIyTgorg7Rhg_g&callback=initMap"></script>
-    <script>
-    $(function () {
-        $('#datatables').DataTable()
-        $('#full-datatables').DataTable({
-        'paging'      : true,
-        'lengthChange': false,
-        'searching'   : false,
-        'ordering'    : true,
-        'info'        : true,
-        'autoWidth'   : false
+        $('#tolak').on('click', function(){
+            if(confirm('Apakah anda ingin melanjutkan ?')){
+                $('#formTolak').submit();
+            }
+        });
+
+        $('#verifikasi').on('click', function(){
+            if(confirm('Apakah anda ingin melanjutkan ?')){
+                $('#formTerima').submit();
+            }
         })
-    })
     </script>
 @endpush

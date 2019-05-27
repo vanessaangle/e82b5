@@ -4,6 +4,7 @@ namespace App\Helpers;
 use Illuminate\Http\Request;
 use App\Helpers\AppHelper;
 use Route;
+use Auth;
 
 /**
  * CLAS RENDER
@@ -22,6 +23,7 @@ class Render
     private $hideEdit = false;
     private $method;
     private $attr;
+    private $show = [];
 
 
     /**
@@ -88,6 +90,16 @@ class Render
         } else {
             $this->required = ($this->required == "required") ? "required='required'" : "";
 		}
+    }
+
+    private function is_show(){
+        if(count($this->show) < 1){
+            return true;
+        }
+        if(in_array(Auth::user()->role,$this->show)){
+            return true;
+        }
+        return false;
     }
 
     public function input($data)
@@ -299,6 +311,7 @@ class Render
             $value = $data->{$this->name};
         }
         $option = '';
+        $class = $this->is_show() ? '' : 'hidden';
         foreach ($opt as $list) {
             $option .= '
             <div class="radio">
@@ -309,7 +322,7 @@ class Render
             </div>';
         }
         return '
-        <div class="form-group">
+        <div class="form-group '.$class.'">
             <label for="'.$this->name.'">'.$this->label.'</label>
             '.$option.'
         </div>

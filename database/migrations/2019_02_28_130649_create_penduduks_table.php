@@ -31,7 +31,7 @@ class CreatePenduduksTable extends Migration
             $table->string('kesehatan',20);
             $table->string('tempat_tinggal',20);
             $table->string('pendidikan',20);
-            $table->string('status',15);
+            $table->string('status',25);
             $table->boolean('kks_kps')->nullable();
             $table->boolean('kip_bsm')->nullable();
             $table->boolean('kis_bpjs')->nullable();

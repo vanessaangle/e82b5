@@ -10,6 +10,7 @@ use App\Helpers\AppHelper;
 use App\Desa;
 use Alert;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class PendudukController extends Controller
 {
@@ -75,7 +76,7 @@ class PendudukController extends Controller
             ['label' => 'Beras untuk orang miskin (Raskin)','name' => 'raskin', 'type' => 'radio', 'option' => $options],
             ['label' => 'Kredit Usaha Rakyat (KUR)','name' => 'kur', 'type' => 'radio', 'option' => $options],
             ['label' => 'Desa','name' => 'desa_id','type' => 'select','option' => $desa],
-            ['label' => 'Status','name' => 'status', 'type' => 'radio', 'option' => $status],
+            ['label' => 'Status','name' => 'status', 'type' => 'radio', 'option' => $status, 'show' => ['Operator']],
         ];
     }
     /**
@@ -86,7 +87,13 @@ class PendudukController extends Controller
     public function index()
     {
         $template = (object) $this->template;
-        $data = Penduduk::all();
+        $data = Penduduk::orderBy('created_at','desc')
+            ->get();
+        if(Auth::user()->role == 'Kepala Desa'){
+            $data = Penduduk::where('user_id',Auth::user()->id)
+                ->orderBy('created_at')
+                ->get();
+        }
         return view('admin.penduduk.index',compact('template','data'));
     }
 
@@ -127,7 +134,6 @@ class PendudukController extends Controller
             'kesehatan' => 'required',
             'tempat_tinggal' => 'required',
             'pendidikan' => 'required',
-            'status' => 'required',
             'desa_id' => 'required'
         ]);
         $data = $request->all();
@@ -214,5 +220,25 @@ class PendudukController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function tolak($id)
+    {
+        Penduduk::find($id)
+            ->update([
+                'status' => 'Ditolak'
+            ]);
+        Alert::make('success','Berhasil menyimpan data.');
+        return redirect(route('penduduk.index'));
+    }
+
+    public function terima($id)
+    {
+        Penduduk::find($id)
+            ->update([
+                'status' => 'Sudah Verifikasi '
+            ]);
+        Alert::make('success','Berhasil menyimpan data.');
+        return redirect(route('penduduk.index'));    
     }
 }

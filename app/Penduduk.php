@@ -10,6 +10,10 @@ class Penduduk extends Model
 
     protected $guarded = [];
 
+    protected $attributes = [
+        'status' => 'Belum Verifikasi',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

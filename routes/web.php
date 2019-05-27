@@ -32,6 +32,8 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'], function(){
             '/penduduk' => 'PendudukController',
             '/web' => 'WebController'
         ]); 
+        Route::post('penduduk/{id}/tolak','PendudukController@tolak');
+        Route::post('penduduk/{id}/terima','PendudukController@terima');
     });
 });
 

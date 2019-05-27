@@ -27,7 +27,8 @@ class UserController extends Controller
 
         $role = [
             ['value' => 'Admin','name' => 'Admin'],
-            ['value' => 'Operator','name' => 'Operator']
+            ['value' => 'Operator','name' => 'Operator'],
+            ['value' => 'Kepala Desa','name' => 'Kepala Desa']
         ];
 
         return [

@@ -127,7 +127,7 @@
                     @endif
 
                     {{-- //menentukan hak akses user --}}
-                    @if(AppHelper::access(['Operator']))
+                    @if(AppHelper::access(['Operator','Kepala Desa']))
                         <li class="{{$template->menu == 'penduduk' ? 'active' : ''}}">
                             <a href="{{route('penduduk.index')}}"  >
                                 <i class="fa fa-users"></i> 
